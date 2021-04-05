@@ -1,5 +1,12 @@
 import os # operating system
 
+# 建立新檔
+def creat_file(filename):
+	with open(filename, 'w', encoding = 'utf-8-sig') as f:
+		f.write('商品,價格\n')
+	products = []
+	return products
+
 # 讀取檔案
 def read_file(filename):
 	products = []
@@ -36,16 +43,20 @@ def write_file(filename, products):
 
 
 def main():
-	filename = 'products.csv'
+	filename = 'products0.csv'
 	if os.path.isfile(filename): # 檢查檔案在不在
 		print('找到檔案了')
-		priducts = read_file(filename)
+		products = read_file(filename)
 	else:
 		print('找不到檔案')
+		products = creat_file(filename)
+
 
 	products = user_input(products)
 	print_products(products)
-	write_file('products.csv', products)
+	write_file(filename, products)
 
 main()
+# products = read_file('products.csv')
+# products = user_input(products)
 
